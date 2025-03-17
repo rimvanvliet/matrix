@@ -1,0 +1,43 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "chat.vliet.io"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+  - port: 8448
+    type: http
+    tls: false
+    resources:
+      - names: [federation]
+        compress: false
+database:
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
+log_config: "/data/chat.vliet.io.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "eOZsSkGr8p,pnEq=n0DL2~IO5rtIPFVWjb&S6VZKZOIUP4cYF&"
+report_stats: true
+macaroon_secret_key: "kRk3-^UP+tLwg~:zu1x@=zfgSoN;=lwnSTcEQPwS5qNP8cbY1#"
+form_secret: "jC1U5jtC;Yxvagjthq~o97bY+GAgb#SIq@~^#-q8mNwYR#xXZo"
+signing_key_path: "/data/chat.vliet.io.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+
+# vim:ft=yaml
