@@ -2,11 +2,13 @@
 
 ## Opzetten server
 start voor het `docker compose up -d`
-```docker run -it --rm \
+```
+docker run -it --rm \
     -v /path/to/synapse/config:/data \
     -e SYNAPSE_SERVER_NAME=chat.vliet.io \
     -e SYNAPSE_REPORT_STATS=yes \
-    matrixdotorg/synapse:latest generate```
+    matrixdotorg/synapse:latest generate
+```
 
 start nu met `docker compose up -d` de stack
 
